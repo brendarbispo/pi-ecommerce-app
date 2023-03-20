@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\{
+    ProdutoController
+};
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +18,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    $array = [1, 2, 3, 4, 5];
+    $nome = ['Brenda', 'Thaina', 'Joao'];
+    $idade = 25;
+
+    return view(
+        'welcome',
+        [
+            'nome' => $nome,
+            'idade' => $idade,
+            'array' => $array
+        ]
+    );
 });
+
+Route::get('/produtos', [ProdutoController::class, "produtos"]);
+
+Route::get('/produto/{id}',[ProdutoController::class, "produto"]);
