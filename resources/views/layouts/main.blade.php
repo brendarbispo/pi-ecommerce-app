@@ -37,7 +37,7 @@
 
                     </li>
                     <li class="nav-item ms-1 me-1">
-                        <a class="nav-link" href="carrinho.html"><i class="fas fa-bag-shopping"></i></a>
+                        <a class="nav-link" href="{{url('/carrinho')}}"><i class="fas fa-bag-shopping"></i></a>
                     </li>
                     <li class="nav-item ms-1 me-1">
 

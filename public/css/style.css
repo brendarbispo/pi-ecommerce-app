@@ -68,3 +68,9 @@ li{
     width: 500px;
     height: 500px;
 }
+
+.card-link{
+    text-decoration: none;
+    color: rgba(0,0,0);
+}
+

@@ -17,11 +17,9 @@ use App\Http\Controllers\{
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
 
-    $array = [1, 2, 3, 4, 5];
-    $nome = ['Brenda', 'Thaina', 'Joao'];
-    $idade = 25;
+    
 
     return view(
         'welcome',
@@ -31,8 +29,24 @@ Route::get('/', function () {
             'array' => $array
         ]
     );
-});
+});*/
 
 Route::get('/produtos', [ProdutoController::class, "produtos"]);
 
 Route::get('/produto/{id}',[ProdutoController::class, "produto"]);
+
+Route::get('/', function(){
+    return view('index');
+});
+
+Route::get('/carrinho', function(){
+    return view('carrinho');
+});
+
+Route::get('/listaPedidos', function(){
+    return view('listaPedidos');
+});
+
+Route::get('/cadastro', function(){
+    return view('cadastro');
+});

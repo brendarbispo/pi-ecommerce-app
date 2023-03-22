@@ -5,6 +5,7 @@
 @section('container')
     <div class="container">
         <div class="row justify-content-center">
+            
             @foreach ($produtos as $produto)
                 <div class="col-3 my-3">
                     <div class="card">

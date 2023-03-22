@@ -22,7 +22,7 @@
 
             <!--CONTAINER LOGO-->
             <a class="navbar-brand" href="#">
-                <img src="img/logoDelta.jpg" alt="logo_delta" width="48" height="48">
+                <img src="{{url ('/img/logo.jpg')}}" alt="logo_delta" width="48" height="48">
             </a>
             <div class="input-group mx-10">
                 <input type="text" class="form-control" placeholder="Buscar produto...">
@@ -37,7 +37,7 @@
 
                     </li>
                     <li class="nav-item ms-1 me-1">
-                        <a class="nav-link" href="carrinho.html"><i class="fas fa-bag-shopping"></i></a>
+                        <a class="nav-link" href="{{url('/carrinho')}}"><i class="fas fa-bag-shopping"></i></a>
                     </li>
                     <li class="nav-item ms-1 me-1">
 
@@ -90,8 +90,9 @@
 
     @yield('container')
 
-    <!--INICIO DO FOOTER-->
-    <div class="container">
+
+        <!--INICIO DO FOOTER-->
+        <div class="container">
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">INICIO</a></li>
@@ -103,12 +104,14 @@
             <p class="text-center text-muted">© 2023 DELTA STORES, Criado por Brenda Rodrigues e João Setani - TSI</p>
         </footer>
     </div>
-    <!--FIM DO FOOTER-->
+
 
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-</script>
 
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
 </html>
