@@ -35,6 +35,7 @@ Route::get('/produtos', [ProdutoController::class, "produtos"]);
 
 Route::get('/produto/{id}',[ProdutoController::class, "produto"]);
 
+
 Route::get('/', function(){
     return view('index');
 });
