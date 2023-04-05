@@ -3,13 +3,12 @@
 @section('title', 'Produtos')
 
 @section('container')
-    <div class="container">
-        <div class="row justify-content-center">
-            
+<div class="container">
+    <div class="row justify-content-center">
             @foreach ($produtos as $produto)
                 <div class="col-3 my-3">
                     <div class="card">
-                        <img src="/img/producto1.png" class="card-img-top" alt="...">
+                        <img src="{{$produto->ProdutoImagem[0]->IMAGEM_URL}}g" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"> {{ $produto->PRODUTO_NOME }} </h5>
                             <p class="card-text"> {{ $produto->PRODUTO_PRECO }}</p>
@@ -18,15 +17,13 @@
                     </div>
                 </div>
             @endforeach
-
-
-        </div>
     </div>
+</div>
 
-    <div>
-        <ul class="pagination text-center justify-content-center">
-            <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
-            <li class="page-item"><a class="page-link text-dark" href="#"> > </a></li>
-        </ul>
-    </div>
+<div>
+    <ul class="pagination text-center justify-content-center">
+        <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+        <li class="page-item"><a class="page-link text-dark" href="#"> > </a></li>
+    </ul>
+</div>
 @endsection

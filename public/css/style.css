@@ -1,11 +1,20 @@
-/* PALETA DE CORES */
+/* PALETA DE CORES
+
+#1C8394 verde claro
+#154B52 verde escuro
+#000B0D cinza escuro
+#3D3D3D cinza
+#390D02 vermelho escuro
+#A52502 vermelho
+
+*/
 
 /* FONTES */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;800&family=Roboto:wght@300;500&display=swap');
 
 nav a{
- 
+
     font-family: 'Roboto', sans-serif ;
     font-size: 22px;
     font-weight: 500;
@@ -42,8 +51,8 @@ li{
     margin-left: 10rem!important;
 }
 .banner{
-    background-color: black;
-    color: white ;
+    background-color:white;
+    color: #457373;
 }
 
 .banner h3 {
@@ -73,3 +82,42 @@ li{
     color: rgba(0,0,0);
 }
 
+nav
+{
+    background-color:#3D3D3D;
+}
+
+.logo{
+    width: 102px;
+    height: auto;
+}
+i{
+    color: white;
+
+}
+input.form-control{
+    width: 60px;
+}
+.form-control
+{
+   border: white;
+   border-radius: 30px;
+}
+.btn-outline-secondary
+{
+    background-color: white;
+    border: white;
+    border-radius: 30px;
+}
+.fa-search{
+    color: #3D3D3D;
+}
+
+.fa-search::before{
+    color: #d5d5d5;
+}
+.img-fluid
+{
+    width: 1300px;
+    height: 600px;
+}

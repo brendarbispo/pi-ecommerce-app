@@ -16,13 +16,13 @@
 
 <body>
     <!-- BARRA DE NAVEGAÇAO -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light py-4">
+    <nav class="navbar navbar-expand-lg navbar-light py-4">
 
         <div class="container">
 
             <!--CONTAINER LOGO-->
             <a class="navbar-brand" href="#">
-                <img src="{{ url('/img/logo.jpg') }}" alt="logo_delta" width="48" height="48">
+                <img class="logo" src="{{ url('/img/logo.jpg') }}" alt="logo_delta">
             </a>
             <div class="input-group mx-10">
                 <input type="text" class="form-control" placeholder="Buscar produto...">
