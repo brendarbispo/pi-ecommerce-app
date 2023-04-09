@@ -43,8 +43,7 @@
         </div>
                 <!-- CARDBOX - 3 PRODUTOS-->
                 <div class="row">
-            @foreach(\App\Models\ProdutoModel::all()->take(3) as $produto)
-
+            @foreach(\App\Models\Produto::all()->take(3) as $produto)
             <div class="col-4" align="center">
                 <a href="#" class="card-link">
                     <div class="card" style="width: 18rem;">

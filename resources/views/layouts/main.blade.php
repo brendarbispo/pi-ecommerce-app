@@ -21,7 +21,7 @@
         <div class="container">
 
             <!--CONTAINER LOGO-->
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{url('/')}}">
                 <img class="logo" src="{{ url('/img/logo.jpg') }}" alt="logo_delta">
             </a>
             <div class="input-group mx-10">
