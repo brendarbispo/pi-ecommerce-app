@@ -1,10 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\{
-    ProdutoController
-};
+use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\ProdutoController;
+use App\Models\Produto;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +38,9 @@ Route::get('/produto/{id}',[ProdutoController::class, "produto"]);
 Route::get('/', function(){
     return view('index');
 });
+
+Route::post('/carrinho/{id}', [CarrinhoController::class, 'store'])->name();
+
 
 Route::get('/carrinho', function(){
     return view('carrinho');
