@@ -39,7 +39,7 @@ Route::get('/', function(){
     return view('index');
 });
 
-Route::post('/carrinho/{id}', [CarrinhoController::class, 'store'])->name();
+//Route::post('/carrinho/{id}', [CarrinhoController::class, 'store'])->name();
 
 
 Route::get('/carrinho', function(){
