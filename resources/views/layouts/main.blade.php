@@ -40,10 +40,15 @@
                         <a class="nav-link" href="{{url('/carrinho')}}"><i class="fas fa-bag-shopping"></i></a>
                     </li>
                     <li class="nav-item ms-1 me-1">
-
+                    @if (auth()->check())
+                    <a class="nav-link" href="/logout">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    @else
                         <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
                             <i class="fas fa-user"></i>
                         </a>
+                    @endif
                     </li>
 
                 </ul>
@@ -66,16 +71,26 @@
                         @csrf
                         <div class="mb-3">
                             <label for="email" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control" id="email">
+                            <input type="email" class="form-control" id="email" name="USUARIO_EMAIL">
                         </div>
                         
                         <div class="mb-3">
                             <label for="senha" class="col-form-label">Senha:</label>
-                            <input type="password" class="form-control" id="senha">
+                            <input type="password" class="form-control" id="senha" name="USUARIO_SENHA">
                         </div>
                         <div class="mb-3">
                             <a href="#">
                                 Esqueceu sua senha?
+                            </a>
+                        </div>
+                        <div class="mb-3">
+                            <input type="checkbox" name="lembrar" href="#">
+                                Lembrar de mim
+                            </input>
+                        </div>
+                        <div class="mb-3">
+                            <a href="{{url('/cadastro')}}">
+                                Ainda não tem conta? Cadastre-se aqui.
                             </a>
                         </div>
                         @if (count($errors) > 0)

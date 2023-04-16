@@ -35,13 +35,11 @@ Route::get('/', function(){
     return view('welcome');
 });
 
+Route::middleware('auth')->group(function () {
 Route::get('/produtos', [ProdutoController::class, "produtos"]);
+});
 
 Route::get('/produto/{id}',[ProdutoController::class, "produto"]);
-
-Route::post('/login', [AuthController::class, 'login']);
-
-Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::get('/', function(){
     return view('index');

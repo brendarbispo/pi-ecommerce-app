@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+
+use App\Models\Usuario;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -20,7 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        return view('cadastro');
     }
 
     /**
@@ -30,16 +31,19 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        /*$request->validate([
+            'USUARIO_NOME' => ['required', 'string', 'max:255'],
+            'USUARIO_EMAIL' => ['required', 'string', 'email', 'max:255', 'unique:USUARIO,USUARIO_EMAIL'],
+            'USUARIO_SENHA' => ['required', 'string', 'min:8', 'confirmed'],
+            'USUARIO_CPF' => ['required', 'string', 'max:14', 'unique:USUARIO,USUARIO_CPF'],
+        ]);*/
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+        $user = Usuario::create([
+
+            'USUARIO_NOME' => $request->nome,
+            'USUARIO_EMAIL' => $request->email,
+            'USUARIO_SENHA' => Hash::make($request->senha),
+            'USUARIO_CPF' => $request->cpf,
         ]);
 
         event(new Registered($user));
@@ -48,4 +52,5 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+    
 }
