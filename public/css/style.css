@@ -125,3 +125,6 @@ i{
    border: white;
    border-radius: 30px;
 }
+.mw-0{
+    min-width: 0 !important;
+}

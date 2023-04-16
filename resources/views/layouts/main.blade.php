@@ -30,19 +30,34 @@
             </div>
 
             <!--INICIO DO BLOCO DE PESQUISA/CARRINHO/ENTRAR-->
-            <div class="d-flex">
-                <a class="nav-link" href="{{url('/carrinho')}}"><i class="fas fa-bag-shopping"></i></a>
+            <ul class="navbar-nav d-flex flex-row">
+                <li class="nav-item me-3 me-lg-0">
+                    <a class="nav-link" href="{{url('/carrinho')}}"><i class="fas fa-bag-shopping"></i></a>
+                </li>
                 @if (auth()->check())
                 <a class="nav-link" href="/logout">
                     <i class="fas fa-user"></i>
                 </a>
+
                 @else
+                <!-- NAO APAGAR
                 <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
                     <i class="fas fa-user"></i>
-                </a>
+                </a> -->
+
+                <li class="nav-item me-3 me-lg-0 dropdown">
+                    <a class="nav-link" href="#" id="perfil" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <ul class="dropdown-menu mw-0" aria-labelledby="perfil">
+                        <li><a class="dropdown-item" href="#">Perfil</a></li>
+                        <li ><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </li>
+
                 @endif
-                </ul>
-            </div>
+
+            </ul>
             <!--FIM DO BLOCO DE PESQUISA/CARRINHO/ENTRAR-->
         </div>
 
@@ -52,8 +67,33 @@
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-body">
+                @if (count($errors) > 0)
+                <div class="modal-header ">
+                    <div class="container">
+                        <div class="row justify-content-md-center">
+                            <div class="col-md-auto">
+                                <div class="alert alert-danger mb-3">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    window.onload = function() {
+                        var loginModal = new bootstrap.Modal(document.getElementById('loginModal'), {
+                            keyboard: false
+                        });
+                        loginModal.show();
+                    };
+                </script>
+                @endif
 
+                <div class="modal-body">
                     <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">LOGIN</button>
@@ -86,15 +126,6 @@
                                     Lembrar de mim
                                     </input>
                                 </div>
-                                @if (count($errors) > 0)
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                @endif
                                 <div class="modal-footer ">
                                     <div class="mx-auto">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
@@ -134,15 +165,7 @@
                                     <input type="password" class="form-control" id="repetir-senha" name="repetirsenha">
                                 </div>
 
-                                @if (count($errors) > 0)
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                @endif
+
                                 <div class="modal-footer ">
                                     <div class="mx-auto">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
@@ -161,9 +184,7 @@
             </div>
         </div>
     </div>
-
-
-
+    <!-- FIM MODAL -->
 
     @yield('container')
 
