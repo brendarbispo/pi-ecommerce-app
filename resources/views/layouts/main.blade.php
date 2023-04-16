@@ -8,8 +8,7 @@
 
     <title>@yield('title')</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="{{ url('/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" />
 </head>
@@ -32,25 +31,16 @@
 
             <!--INICIO DO BLOCO DE PESQUISA/CARRINHO/ENTRAR-->
             <div class="d-flex">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item ms-1 me-1">
-
-                    </li>
-                    <li class="nav-item ms-1 me-1">
-                        <a class="nav-link" href="{{url('/carrinho')}}"><i class="fas fa-bag-shopping"></i></a>
-                    </li>
-                    <li class="nav-item ms-1 me-1">
-                    @if (auth()->check())
-                    <a class="nav-link" href="/logout">
-                            <i class="fas fa-user"></i>
-                        </a>
-                    @else
-                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
-                            <i class="fas fa-user"></i>
-                        </a>
-                    @endif
-                    </li>
-
+                <a class="nav-link" href="{{url('/carrinho')}}"><i class="fas fa-bag-shopping"></i></a>
+                @if (auth()->check())
+                <a class="nav-link" href="/logout">
+                    <i class="fas fa-user"></i>
+                </a>
+                @else
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <i class="fas fa-user"></i>
+                </a>
+                @endif
                 </ul>
             </div>
             <!--FIM DO BLOCO DE PESQUISA/CARRINHO/ENTRAR-->
@@ -62,57 +52,118 @@
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">Login - DELTA STORE</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
                 <div class="modal-body">
-                    <form  method="POST" action="/login">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="email" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control" id="email" name="USUARIO_EMAIL">
-                        </div>
 
-                        <div class="mb-3">
-                            <label for="senha" class="col-form-label">Senha:</label>
-                            <input type="password" class="form-control" id="senha" name="USUARIO_SENHA">
+                    <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">LOGIN</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-cadastro-tab" data-bs-toggle="pill" data-bs-target="#pills-cadastro" type="button" role="tab" aria-controls="pills-cadastro" aria-selected="false">CADASTRO</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
+
+                            <form method="POST" action="/login">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="email" class="col-form-label">Email:</label>
+                                    <input type="email" class="form-control" id="email" name="USUARIO_EMAIL">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="senha" class="col-form-label">Senha:</label>
+                                    <input type="password" class="form-control" id="senha" name="USUARIO_SENHA">
+                                </div>
+                                <div class="mb-3">
+                                    <a href="#">
+                                        Esqueceu sua senha?
+                                    </a>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="checkbox" name="lembrar" href="#">
+                                    Lembrar de mim
+                                    </input>
+                                </div>
+                                @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
+                                <div class="modal-footer ">
+                                    <div class="mx-auto">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                                        <button type="submmit" class="btn btn-primary">Entrar</button>
+                                    </div>
+                                </div>
+                            </form>
+
                         </div>
-                        <div class="mb-3">
-                            <a href="#">
-                                Esqueceu sua senha?
-                            </a>
+                        <div class="tab-pane fade" id="pills-cadastro" role="tabpanel" aria-labelledby="pills-cadastro-tab">
+
+                            <form method="POST" action="/cadastro">
+                                @csrf
+
+                                <div class="mb-3">
+                                    <label for="nome" class="col-form-label">Nome:</label>
+                                    <input type="nome" class="form-control" id="nome" name="nome">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="cpf" class="col-form-label">CPF:</label>
+                                    <input type="cpf" class="form-control" id="cpf" name="cpf">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="col-form-label">Email:</label>
+                                    <input type="email" class="form-control" id="email" name="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="repetir-email" class="col-form-label">Repetir email:</label>
+                                    <input type="email" class="form-control" id="repetir-email" name="repetiremail">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="senha" class="col-form-label">Senha:</label>
+                                    <input type="password" class="form-control" id="senha" name="senha">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="repetir-senha" class="col-form-label">Repetir Senha:</label>
+                                    <input type="password" class="form-control" id="repetir-senha" name="repetirsenha">
+                                </div>
+
+                                @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
+                                <div class="modal-footer ">
+                                    <div class="mx-auto">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                                        <button type="submmit" class="btn btn-primary">Cadastrar</button>
+                                    </div>
+                                </div>
+                            </form>
+
+
                         </div>
-                        <div class="mb-3">
-                            <input type="checkbox" name="lembrar" href="#">
-                                Lembrar de mim
-                            </input>
-                        </div>
-                        <div class="mb-3">
-                            <a href="{{url('/cadastro')}}">
-                                Ainda não tem conta? Cadastre-se aqui.
-                            </a>
-                        </div>
-                        @if (count($errors) > 0)
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        <div class="modal-footer ">
-                    <div class="mx-auto">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                        <button type="submmit" class="btn btn-primary">ENTRAR</button>
                     </div>
+
+
                 </div>
-                    </form>
-                </div>
+
             </div>
         </div>
     </div>
+
+
+
 
     @yield('container')
 
@@ -133,8 +184,7 @@
 
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
 
 </html>
