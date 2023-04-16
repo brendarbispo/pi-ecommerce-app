@@ -12,6 +12,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="{{ url('/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" />
+    <script></script>
 </head>
 
 <body>
@@ -62,28 +63,29 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="POST" action="/login">
+                        @csrf
                         <div class="mb-3">
                             <label for="email" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control" id="email">
+                            <input type="email" name="email" class="form-control" id="email">
                         </div>
                         <div class="mb-3">
                             <label for="senha" class="col-form-label">Senha:</label>
-                            <input type="password" class="form-control" id="senha">
+                            <input type="password" name="senha" class="form-control" id="senha">
                         </div>
                         <div class="mb-3">
                             <a href="#">
                                 Esqueceu sua senha?
                             </a>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer ">
-                    <div class="mx-auto">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                        <button type="button" class="btn btn-primary">ENTRAR</button>
                     </div>
-                </div>
+                    <div class="modal-footer ">
+                        <div class="mx-auto">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                            <button type="submit" class="btn btn-primary">ENTRAR</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

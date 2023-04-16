@@ -62,11 +62,13 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form  method="POST" action="/login">
+                        @csrf
                         <div class="mb-3">
                             <label for="email" class="col-form-label">Email:</label>
                             <input type="email" class="form-control" id="email">
                         </div>
+                        
                         <div class="mb-3">
                             <label for="senha" class="col-form-label">Senha:</label>
                             <input type="password" class="form-control" id="senha">
@@ -76,13 +78,22 @@
                                 Esqueceu sua senha?
                             </a>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer ">
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <div class="modal-footer ">
                     <div class="mx-auto">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                        <button type="button" class="btn btn-primary">ENTRAR</button>
+                        <button type="submmit" class="btn btn-primary">ENTRAR</button>
                     </div>
+                </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\ProdutoController;
 use App\Models\Produto;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,16 +31,23 @@ use App\Models\Produto;
     );
 });*/
 
+Route::get('/', function(){
+    return view('welcome');
+});
+
 Route::get('/produtos', [ProdutoController::class, "produtos"]);
 
 Route::get('/produto/{id}',[ProdutoController::class, "produto"]);
 
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::get('/', function(){
     return view('index');
 });
 
-//Route::post('/carrinho/{id}', [CarrinhoController::class, 'store'])->name();
+//Route::post('/carrinho/{id}', [CarrinhoController::class, 'store'])->name("");
 
 
 Route::get('/carrinho', function(){
@@ -62,3 +70,12 @@ Route::get('/produto', function(){
 Route::get('layouts/header', function(){
     return view('header');
 });
+
+
+Route::get('/index', function(){
+    return view('index');
+
+});
+
+
+require __DIR__.'/auth.php';

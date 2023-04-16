@@ -11,7 +11,7 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        $request->validate([
+        $request->validate([ 
             'email' => 'required',
             'password' => 'required',
         ]);
@@ -19,7 +19,7 @@ class AuthController extends Controller
         $email = $request->only('email');
         $senha = $request->only('senha');
 
-        $usuario = Usuario::find($email);
+        $usuario = Usuario::where('USUARIO_EMAIL', $email)->get();
         if($senha == $usuario['USUARIO_SENHA']){
             if (Auth::attempt($email)) {
                 return redirect()->intended('/')->withSuccess('ok');
