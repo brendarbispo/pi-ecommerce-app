@@ -25,8 +25,8 @@
                 <img class="logo" src="{{ url('/img/logo.jpg') }}" alt="logo_delta">
             </a>
             <div class="input-group mx-10">
-                <input type="text" class="form-control" placeholder="Buscar produto...">
-                <button class="btn btn-outline-secondary" type="button">
+                <input type="text" class="form-control busca-borda" placeholder="Buscar produto...">
+                <button class="btn btn-outline-secondary busca-borda" type="button">
                     <i class="fas fa-search"></i></button>
             </div>
 
@@ -68,7 +68,7 @@
                             <label for="email" class="col-form-label">Email:</label>
                             <input type="email" class="form-control" id="email">
                         </div>
-                        
+
                         <div class="mb-3">
                             <label for="senha" class="col-form-label">Senha:</label>
                             <input type="password" class="form-control" id="senha">

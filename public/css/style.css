@@ -95,14 +95,7 @@ i{
     color: white;
 
 }
-input.form-control{
-    width: 60px;
-}
-.form-control
-{
-   border: white;
-   border-radius: 30px;
-}
+
 .btn-outline-secondary
 {
     background-color: white;
@@ -125,5 +118,10 @@ input.form-control{
 {
     width: 450px;
     height: auto;
+}
 
+.busca-borda
+{
+   border: white;
+   border-radius: 30px;
 }
