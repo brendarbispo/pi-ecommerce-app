@@ -17,90 +17,24 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-<<<<<<< Updated upstream
-Route::get('/', function(){ return view('index');});
-
-Route::get('/produto/{id}',[ProdutoController::class, "produto"]);
-
-Route::get('/produtos', [ProdutoController::class, "produtos"]);
-=======
-/*Route::get('/', function () {
-
-
-
-    return view(
-        'welcome',
-        [
-            'nome' => $nome,
-            'idade' => $idade,
-            'array' => $array
-        ]
-    );
-});*/
-
-Route::get('/', function(){
-    return view('welcome');
-});
-
-Route::middleware('auth')->group(function () {
-Route::get('/produtos', [ProdutoController::class, "produtos"]);
-});
-
-Route::get('/produto/{id}',[ProdutoController::class, "produto"]);
-
-Route::get('/', function(){
+Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/produto/{id}', [ProdutoController::class, "produto"]);
 
-//Route::post('/carrinho/{id}', [CarrinhoController::class, 'store'])->name("");
+Route::get('/produtos', [ProdutoController::class, "produtos"]);
 
->>>>>>> Stashed changes
-
-Route::get('/carrinho', function(){
+Route::get('/carrinho', function () {
     return view('carrinho');
 });
 
-<<<<<<< Updated upstream
 Route::middleware('auth')->group(function () {
     //
     //perfil, carrinho, Xpedidos, pedido, endereços
-    Route::get('/pedidos', function(){
+    Route::get('/pedidos', function () {
         return view('pedidos');
     });
-    
-    });
-    
-require __DIR__.'/auth.php';
-=======
-Route::get('/listaPedidos', function(){
-    return view('listaPedidos');
 });
 
-Route::get('/cadastro', function(){
-    return view('cadastro');
-});
-
-
-Route::get('/produto', function(){
-    return view('produto');
-});
-
-Route::get('layouts/header', function(){
-    return view('header');
-});
-
-
-Route::get('/index', function(){
-    return view('index');
-
-});
-
-Route::get('/perfil', function(){
-    return view('perfil');
-});
-
-
-
-require __DIR__.'/auth.php';
->>>>>>> Stashed changes
+require __DIR__ . '/auth.php';
