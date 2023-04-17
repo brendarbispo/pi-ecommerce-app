@@ -39,7 +39,9 @@ Route::middleware('auth')->group(function () {
         return view('pedidos');
     });
 
-    Route::get('/perfil', [PerfilController::class, 'criar']);
+    Route::get('/perfil', [PerfilController::class, 'perfil']);
+    Route::get('/perfil/editar', [PerfilController::class, 'buscar']);
+    Route::post('/perfil/editar', [PerfilController::class, 'editar']);
 
     //buscar e criar endereco
     Route::get('/endereco', [EnderecoController::class, 'endereco']);

@@ -51,9 +51,9 @@
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <button type="button" class="btn btn-outline-dark align-items-center" data-mdb-ripple-color="dark" style="z-index: 1;">
+                            <a href="{{url('/perfil/editar')}}"type="button" class="btn btn-outline-dark align-items-center" data-mdb-ripple-color="dark" style="z-index: 1;">
                                 Editar informações
-                            </button>
+                            </a>
                         </div>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-4">
