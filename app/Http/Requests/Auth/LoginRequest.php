@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\Usuario;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -27,8 +29,8 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'USUARIO_EMAIL' => ['required', 'string', 'email'],
-            'USUARIO_SENHA' => ['required', 'string'],
+            'email' => ['required', 'string', 'email'],
+            'senha' => ['required', 'string'],
         ];
     }
 
@@ -39,9 +41,26 @@ class LoginRequest extends FormRequest
      */
     public function authenticate(): void
     {
-        $this->ensureIsNotRateLimited();
+        $usuario = Usuario::where(['USUARIO_EMAIL' => $this->email ])->first();
+        if(is_null($usuario)){
+           
+            throw ValidationException::withMessages([
+                'email' => trans('auth.failed'),
+            ]);
+        }
 
-        if (! Auth::attempt($this->only('USUARIO_EMAIL', 'USUARIO_SENHA'), $this->boolean('lembrar'))) {
+        if(Hash::check($this->senha, $usuario->USUARIO_SENHA)){
+            Auth::login($usuario);
+        }else{
+            throw ValidationException::withMessages([
+                'email' => trans('auth.failed'),
+            ]);
+        }
+
+
+       /* $this->ensureIsNotRateLimited();
+
+        if (! Auth::attempt(['USUARIO_EMAIL' => $this->only('USUARIO_EMAIL'), 'USUARIO_SENHA' => $this->only('USUARIO_SENHA')])) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
@@ -49,7 +68,7 @@ class LoginRequest extends FormRequest
             ]);
         }
 
-        RateLimiter::clear($this->throttleKey());
+        RateLimiter::clear($this->throttleKey());*/
     }
 
     /**

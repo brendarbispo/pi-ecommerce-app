@@ -35,26 +35,21 @@
                     <a class="nav-link" href="{{url('/carrinho')}}"><i class="fas fa-bag-shopping"></i></a>
                 </li>
                 @if (auth()->check())
-                <a class="nav-link" href="/logout">
-                    <i class="fas fa-user"></i>
-                </a>
-
-                @else
-                <!-- NAO APAGAR
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    <i class="fas fa-user"></i>
-                </a> -->
-
+            
                 <li class="nav-item me-3 me-lg-0 dropdown">
                     <a class="nav-link" href="#" id="perfil" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user"></i>
                     </a>
                     <ul class="dropdown-menu mw-0" aria-labelledby="perfil">
-                        <li><a class="dropdown-item" href="#">Perfil</a></li>
-                        <li ><a class="dropdown-item" href="#">Logout</a></li>
+                        <li><a class="dropdown-item" href="{{url('/perfil')}}">Perfil</a></li>
+                        <li ><a class="dropdown-item" href="{{url('/sair')}}">Sair</a></li>
                     </ul>
                 </li>
 
+                @else
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    <i class="fas fa-user"></i>
+                </a>
                 @endif
 
             </ul>
@@ -109,12 +104,12 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="email" class="col-form-label">Email:</label>
-                                    <input type="email" class="form-control" id="email" name="USUARIO_EMAIL">
+                                    <input type="email" class="form-control" id="email" name="email">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="senha" class="col-form-label">Senha:</label>
-                                    <input type="password" class="form-control" id="senha" name="USUARIO_SENHA">
+                                    <input type="password" class="form-control" id="senha" name="senha">
                                 </div>
                                 <div class="mb-3">
                                     <a href="#">
@@ -122,7 +117,7 @@
                                     </a>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="checkbox" name="lembrar" href="#">
+                                    <input type="checkbox" name="lembrar">
                                     Lembrar de mim
                                     </input>
                                 </div>
