@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PerfilController extends Controller
 {
-    function create()
+    function criar()
     {
         $usuario = auth()->user();
         $enderecos = Endereco::where(['USUARIO_ID' => $usuario->USUARIO_ID])->get();
