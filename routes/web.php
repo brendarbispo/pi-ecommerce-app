@@ -5,6 +5,8 @@ use App\Http\Controllers\CarrinhoController;
 use App\Http\Controllers\ProdutoController;
 use App\Models\Produto;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EnderecoController;
+use App\Http\Controllers\PerfilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,12 +31,21 @@ Route::get('/carrinho', function () {
     return view('carrinho');
 });
 
+    //só pode acessar se estiver autenticado
 Route::middleware('auth')->group(function () {
-    //
+
     //perfil, carrinho, Xpedidos, pedido, endereços
     Route::get('/pedidos', function () {
         return view('pedidos');
     });
+
+    Route::get('/perfil', [PerfilController::class, 'create']);
+
+    //buscar e criar endereco
+    Route::get('/endereco', [EnderecoController::class, 'endereco']);
+    Route::post('/endereco', [EnderecoController::class, 'criar']);
 });
+
+
 
 require __DIR__ . '/auth.php';
