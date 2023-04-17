@@ -128,3 +128,13 @@ i{
 .mw-0{
     min-width: 0 !important;
 }
+
+
+/*
+estilo meu perfil
+*/
+
+.gradient-custom-2 {
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-image: linear-gradient(to bottom right, rgb(57,13,2), rgb(21,75,82),rgb(61,61,61));
+    }
