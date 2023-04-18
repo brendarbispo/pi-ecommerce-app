@@ -12,8 +12,10 @@ use function PHPUnit\Framework\isNull;
 class EnderecoController extends Controller
 {
     function endereco(){
-        return view('endereco');
+        return view('endereco.endereco');
     }
+
+    //criar novo endereco
     function criar(Request $request) : RedirectResponse
     {
         $usuario = auth()->user();
@@ -37,4 +39,38 @@ class EnderecoController extends Controller
 
         return redirect('/perfil');
     }
+
+    function editar(Request $request) : RedirectResponse
+    {
+
+        $usuario = auth()->user();
+        $endereco = Endereco::where(['ENDERECO_ID'=> $request->enderecoId])
+            ->where(['USUARIO_ID'=> $usuario->USUARIO_ID])->first();
+
+        if(is_null($endereco)){
+            //TODO RETORNAR ERRO
+        }
+
+        $endereco->ENDERECO_NOME = $request->nome;
+        $endereco->ENDERECO_LOGRADOURO = $request->logradouro;
+        $endereco->ENDERECO_NUMERO = $request->num;
+        $endereco->ENDERECO_COMPLEMENTO = $request->complemento;
+        $endereco->ENDERECO_CEP = $request->cep;
+        $endereco->ENDERECO_CIDADE = $request->cidade;
+        $endereco->ENDERECO_ESTADO = $request->estado;
+
+        $endereco->save();
+
+        return redirect('/perfil');
+
+    }
+
+    function buscar(Request $request)
+    {
+        $endereco = Endereco::find($request->id);
+
+        return view('endereco.editar', ['endereco' => $endereco]);
+
+    }
+
 }

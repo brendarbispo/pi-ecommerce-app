@@ -34,7 +34,7 @@
                                                 </li>
 
                                             </ul>
-                                            <a href="{{url('/endereco/'.$endereco->ENDERECO_ID)}}" class="btn btn-outline-dark align-items-center btn-sm fw-bold" data-mdb-ripple-color="dark" style="z-index: 1;">Editar
+                                            <a href="{{url('/endereco/editar/'.$endereco->ENDERECO_ID)}}" class="btn btn-outline-dark align-items-center btn-sm fw-bold" data-mdb-ripple-color="dark" style="z-index: 1;">Editar
                                             </a>
                                         </div>
                                     </div>
@@ -43,7 +43,7 @@
                                 @endforeach
                                 <div class="col-md-3">
                                     <a href="/endereco" class="btn btn-outline-dark btn-sm fw-bold" data-mdb-ripple-color="dark" style="z-index: 1;">
-                                        Novo Endereco
+                                        Novo Endereço
                                         <i class="fas fa-plus" style="color:black;"></i>
                                     </a>
 

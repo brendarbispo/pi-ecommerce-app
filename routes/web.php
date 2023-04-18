@@ -42,6 +42,8 @@ Route::middleware('auth')->group(function () {
     //buscar e criar endereco
     Route::get('/endereco', [EnderecoController::class, 'endereco']);
     Route::post('/endereco', [EnderecoController::class, 'criar']);
+    Route::get('/endereco/editar/{id}', [EnderecoController::class, 'buscar']);
+    Route::post('/endereco/editar/', [EnderecoController::class, 'editar']);
 
     Route::get('/carrinho', [CarrinhoController::class, "carrinho"]);
     Route::get('/carrinho/add/{produtoId}/{qtd}', [CarrinhoController::class, "adicionar"]);
