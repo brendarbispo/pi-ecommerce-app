@@ -61,7 +61,7 @@
                                             -->
                                         </div>
                                         <hr class="my-4">
-                                        <button type="button" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">Adicionar ao carrinho</button>
+                                        <a class="btn btn-dark btn-block btn-lg" href="{{url('/carrinho/add/'. $produto->PRODUTO_ID . '/'. 1)}}" data-mdb-ripple-color="dark">Adicionar ao carrinho</a>
                                     </div>
                                 </div>
                             </div>
