@@ -27,11 +27,7 @@ Route::get('/produto/{id}', [ProdutoController::class, "produto"]);
 
 Route::get('/produtos', [ProdutoController::class, "produtos"]);
 
-Route::get('/carrinho', function () {
-    return view('carrinho');
-});
-
-    //só pode acessar se estiver autenticado
+//só pode acessar se estiver autenticado
 Route::middleware('auth')->group(function () {
 
     //perfil, carrinho, Xpedidos, pedido, endereços
@@ -44,8 +40,9 @@ Route::middleware('auth')->group(function () {
     //buscar e criar endereco
     Route::get('/endereco', [EnderecoController::class, 'endereco']);
     Route::post('/endereco', [EnderecoController::class, 'criar']);
+
+    Route::get('/carrinho', [CarrinhoController::class, "carrinho"]);
+    Route::get('/carrinho/add/{produtoId}/{qtd}', [CarrinhoController::class, "adicionar"]);
 });
-
-
 
 require __DIR__ . '/auth.php';
