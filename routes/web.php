@@ -45,8 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/endereco/editar/{id}', [EnderecoController::class, 'buscar']);
     Route::post('/endereco/editar/', [EnderecoController::class, 'editar']);
 
-    Route::get('/carrinho', [CarrinhoController::class, "carrinho"]);
-    Route::get('/carrinho/add/{produtoId}/{qtd}', [CarrinhoController::class, "adicionar"]);
+    Route::get('/carrinho', [CarrinhoController::class, 'carrinho']);
+    Route::get('/carrinho/add/{produtoId}/{qtd}', [CarrinhoController::class, 'adicionar']);
 });
 
 require __DIR__ . '/auth.php';

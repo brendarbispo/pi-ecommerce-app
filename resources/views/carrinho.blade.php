@@ -49,10 +49,10 @@
                               <h2>Ainda não existe produto no carrinho</h2>
                             @endif
 
-                            
-          
-                            
-          
+
+
+
+
                             <div class="pt-5">
                               <h6 class="mb-0"><a href="/produtos" class="text-body"><i
                                     class="fas fa-long-arrow-alt-left me-2"></i>Continuar Comprando</a></h6>
@@ -63,14 +63,14 @@
                           <div class="p-5">
                             <h3 class="fw-bold mb-5 mt-2 pt-1">Resumo da Compra</h3>
                             <hr class="my-4">
-          
+
                             <div class="d-flex justify-content-between mb-4">
-                              <h5 class="text-uppercase">3 items</h5>
+                              <h5 class="text-uppercase">{{$pedidoItem->ITEM_QTD}} item</h5>
                               <h5>R$ 132.00</h5>
                             </div>
-          
+
                             <h5 class="text mb-3">Entrega</h5>
-          
+
                             <div class="mb-4 pb-2">
                               <select class="select">
                                 <option value="1">Entrega comum- R$5.00</option>
@@ -79,18 +79,18 @@
                                 <option value="4"></option>
                               </select>
                             </div>
-          
-          
+
+
                             <hr class="my-4">
-          
+
                             <div class="d-flex justify-content-between mb-5">
                               <h5 class="text-uppercase">Total da compra</h5>
-                              <h5>R$ 137.00</h5>
+                              <h5>{{$pedidoItem->ITEM_PRECO}}</h5>
                             </div>
-          
+
                             <button type="button" class="btn btn-dark btn-block btn-lg"
                               data-mdb-ripple-color="dark">Avançar</button>
-          
+
                           </div>
                         </div>
                       </div>

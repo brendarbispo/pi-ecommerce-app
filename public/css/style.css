@@ -109,11 +109,11 @@ i{
 .fa-search::before{
     color: #d5d5d5;
 }
-.img-fluid
+/*.img-fluid
 {
     width: 1300px;
     height: 600px;
-}
+}*/
 .imgProduto
 {
     width: 450px;
@@ -130,11 +130,3 @@ i{
 }
 
 
-/*
-estilo meu perfil
-*/
-
-.gradient-custom-2 {
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background-image: linear-gradient(to bottom right, rgb(57,13,2), rgb(21,75,82),rgb(61,61,61));
-    }

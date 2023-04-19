@@ -16,7 +16,7 @@ class CarrinhoController extends Controller
         $pedido = Pedido::where(['USUARIO_ID' => $usuario->USUARIO_ID])->where(['STATUS_ID' => 1])->first();
 
         if(is_null($pedido)){
-            $pedido = Pedido::create([ 
+            $pedido = Pedido::create([
                 'USUARIO_ID' => $usuario->USUARIO_ID,
                 'STATUS_ID' => 1,
                 'PEDIDO_DATA' => date('Y-m-d H:i:s')
@@ -26,7 +26,7 @@ class CarrinhoController extends Controller
         $produto = Produto::where(['PRODUTO_ID' => $request->produtoId])->first();
 
         $pedidoItem = PedidoItem::create([
-            'PRODUTO_ID' => $produto->PRODUTO_ID, 
+            'PRODUTO_ID' => $produto->PRODUTO_ID,
             'PEDIDO_ID' => $pedido->PEDIDO_ID,
             'ITEM_QTD' => $request->qtd,
             'ITEM_PRECO' => $produto->PRODUTO_PRECO,
@@ -45,7 +45,8 @@ class CarrinhoController extends Controller
 
         $pedidoItens = PedidoItem::where('PEDIDO_ID', $pedido->PEDIDO_ID)->get();
 
-        
+
         return view('carrinho', ['pedidoItens' => $pedidoItens]);
     }
+
 }

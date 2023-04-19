@@ -4,11 +4,11 @@
 
 @section('container')
 <div class="container">
-    <section class="h-100 h-custom" style="background-color: white;">
-        <div class="container py-5 h-100">
+    <section class="h-100 h-custom justify-content-center" style="background-color: white;">
+        <div class="container py-5 h-100 ">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12">
-                    <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                <div class="col-12 ">
+                    <div class="card justify-content-center d-flex  card-registration card-registration-2" style="border-radius: 15px;">
                         <div class="card-body p-0">
                             <div class="row g-0">
                                 <div class="col-lg-8">
