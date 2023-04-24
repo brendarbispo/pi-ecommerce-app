@@ -37,7 +37,7 @@
                                         </div>
                                         <hr class="my-4">
 
-                                        <h8 class="text-muted">Estoque: 3</h8>
+                                        <h8 class="text-muted">Estoque: {{$produto->estoque->PRODUTO_QTD}}</h8>
 
                                         <div class="d-flex justify-content-between mb-4">
                                             <h5>{{$produto->PRODUTO_PRECO}}</h5>
