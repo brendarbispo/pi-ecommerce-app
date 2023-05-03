@@ -15,5 +15,6 @@ return [
 
     'failed' => 'Usuário não foi encontrado',
     'throttle' => 'Muitas tentativas, tente novamente em :seconds segundos.',
+    'need' => 'Você precisa estar logado para acessar esta página.',
 
 ];

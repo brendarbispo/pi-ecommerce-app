@@ -7,6 +7,7 @@ use App\Models\Produto;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\PerfilController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,17 +20,29 @@ use App\Http\Controllers\PerfilController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+Route::get('/', function (Request $request) {
+    return view('index', ['request' => $request]);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Route using method get to atchieve path. Using controller whith method.
+| Rota usando o metodo get para entar no caminho. Usando a controller com o metodo.
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/produto/{id}', [ProdutoController::class, "produto"]);
 
 Route::get('/produtos', [ProdutoController::class, "produtos"]);
 
-//só pode acessar se estiver autenticado
-Route::middleware('auth')->group(function () {
+/*
+|--------------------------------------------------------------------------
+| Methods that can only be accessed after passing through the middleware
+| Funcoes que só podem aser acessados apos passar pelo 'middleware'
+|--------------------------------------------------------------------------
+*/
 
+Route::middleware('auth.custom')->group(function () {
     //perfil, carrinho, Xpedidos, pedido, endereços
     Route::get('/pedidos', function () {
         return view('pedidos');

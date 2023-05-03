@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AuthMid
+class AuthenticateCustom
 {
     /**
      * Handle an incoming request.
@@ -17,11 +17,10 @@ class AuthMid
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()){
-            return $next($request);
+        if(!Auth::check()){
+            return redirect()->back()->withErrors([trans('auth.need')]);
         }
 
-        //
         return $next($request);
     }
 }
