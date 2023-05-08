@@ -9,7 +9,8 @@ class PedidoItem extends Model
 {
     use HasFactory;
     protected $table = 'PEDIDO_ITEM';
-    //protected $primaryKey;
+    protected $primaryKey = ['PRODUTO_ID', 'PEDIDO_ID'];
+    public $incrementing = false;
 
     protected $fillable = [
         'PRODUTO_ID',
@@ -21,9 +22,9 @@ class PedidoItem extends Model
 
     public function Produto()
     {
-        $imagens = $this->hasMany(Produto::class, 'PRODUTO_ID', 'PRODUTO_ID');
+        $produtos = $this->hasMany(Produto::class, 'PRODUTO_ID', 'PRODUTO_ID');
 
-        return $imagens;
+        return $produtos;
     }
 
     public function ProdutoImagem()

@@ -18,7 +18,7 @@
                                     <div class="p-5">
                                         <div class="d-flex justify-content-between align-items-center mb-5">
                                             <h1 class="fw-bold mb-0 text-black">Meu Pedido</h1>
-                                            <h6 class="mb-0 text-muted">3 items</h6>
+                                            <h6 class="mb-0 text-muted">{{$qtdTotal}} ite{{$qtdTotal == 1 ? 'm' : 'ns' }}</h6>
                                         </div>
                                         <hr class="my-4">
 
@@ -35,18 +35,21 @@
                                             <div class="col-md-3 col-lg-3 col-xl-3">
                                                 <h6 class="text-muted">{{$pedidoItem->Produto[0]->PRODUTO_NOME}}</h6>
                                             </div>
-
+                                            @if($pedidoItem->Produto[0]->PRODUTO_DESCONTO > 0)
                                             <div class="col-md-1 col-lg-2 col-xl-2 offset-lg-1">
-                                                <h6 class="mb-0">{{$pedidoItem->Produto[0]->PRODUTO_PRECO}}</h6>
+                                                <h6 class="mb-0">De R$ <s>{{$pedidoItem->Produto[0]->PRODUTO_PRECO}}</s></h6>
                                             </div>
-
+                                            <div class="col-md-1 col-lg-2 col-xl-2 offset-lg-1">
+                                                <h6 class="mb-0">Por R$ {{$pedidoItem->Produto[0]->PRODUTO_PRECO}}</h6>
+                                            </div>
+                                            @else
+                                            <div class="col-md-1 col-lg-2 col-xl-2 offset-lg-1">
+                                                <h6 class="mb-0">Por R$ {{$pedidoItem->Produto[0]->PRODUTO_PRECO}}</h6>
+                                            </div>
+                                            @endif
                                         </div>
-                                        <hr class="my-4">
                                         @endforeach
-                                        @else
-                                        <h2>Ainda não existe produto no carrinho</h2>
                                         @endif
-
                                         <div class="pt-5">
                                             <h6 class="mb-0"><a href="/produtos" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Continuar comprando</a></h6>
                                         </div>
@@ -57,10 +60,7 @@
                                         <h3 class="fw-bold mb-5 mt-2 pt-1">Resumo da Compra</h3>
                                         <hr class="my-4">
 
-                                        <div class="d-flex justify-content-between mb-4">
-                                            <h5 class="text-uppercase">{{$pedidoItem->ITEM_QTD}} item</h5>
-                                            <h5>R$ 132.00</h5>
-                                        </div>
+
                                         <form action="{{url('/checkout')}}" method="post">
                                             <h5 class="text mb-3">Entrega</h5>
                                             <div class="mb-4 pb-2">
@@ -69,7 +69,7 @@
                                             <hr class="my-4">
                                             <div class="d-flex justify-content-between mb-5">
                                                 <h5 class="text-uppercase">Total da compra</h5>
-                                                <h5>{{$pedidoItem->ITEM_PRECO}}</h5>
+                                                <h5>{{$valorTotal}}</h5>
                                             </div>
                                         </form>
                                     </div>

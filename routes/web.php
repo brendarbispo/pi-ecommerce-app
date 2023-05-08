@@ -61,6 +61,8 @@ Route::middleware('auth.custom')->group(function () {
 
     Route::get('/carrinho', [CarrinhoController::class, 'carrinho']);
     Route::get('/carrinho/add/{produtoId}/{qtd}', [CarrinhoController::class, 'adicionar']);
+    Route::get('/carrinho/remover/{produtoId}', [CarrinhoController::class, 'remover']);
+
     Route::post('/checkout', [CarrinhoController::class, 'checkout']);
 
 });

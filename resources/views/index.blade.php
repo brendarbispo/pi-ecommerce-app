@@ -44,7 +44,7 @@
     <div class="row">
         @foreach(\App\Models\Produto::all()->take(3) as $produto)
         <div class="col-4" align="center">
-            <a href="#" class="card-link">
+            <a href="/produto/{{ $produto->PRODUTO_ID }}" class="card-link">
                 <div class="card" style="width: 18rem;">
                     <img src="{{$produto->ProdutoImagem[0]->IMAGEM_URL}}" class="card-img-top" alt="">
                     <div class="card-body">

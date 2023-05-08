@@ -17,8 +17,10 @@ class PerfilController extends Controller
     {
         $usuario = auth()->user();
         $enderecos = Endereco::where(['USUARIO_ID' => $usuario->USUARIO_ID])->get();
-        $pedidos = Pedido::where('STATUS_ID', '<>',1)
-            ->where(['USUARIO_ID' => $usuario->USUARIO_ID])->get();
+        $pedidos = Pedido::where('STATUS_ID', '<>', 1)
+            ->where(['USUARIO_ID' => $usuario->USUARIO_ID])
+            ->orderBy('PEDIDO_ID', 'DESC')
+            ->get();
 
         return view(
             'perfil.perfil',
@@ -60,8 +62,23 @@ class PerfilController extends Controller
     function pedido($id)
     {
         $pedido = Pedido::find($id);
-        $pedidoItens = PedidoItem::where('PEDIDO_ID', $pedido->PEDIDO_ID)->get();
+        $pedidoItens = PedidoItem::where('PEDIDO_ID', $pedido->PEDIDO_ID)
+            ->where('ITEM_QTD', '>', 0)
+            ->get();
 
-        return view('pedido', ['pedido' => $pedido, 'pedidoItens' => $pedidoItens]);
+        $valorTotal = 0;
+        $qtdTotal = 0;
+
+        foreach ($pedidoItens as $pedidoItem) {
+            $valorTotal += $pedidoItem->ITEM_PRECO * $pedidoItem->ITEM_QTD;
+            $qtdTotal += $pedidoItem->ITEM_QTD;
+        }
+
+        return view('pedido', [
+            'pedido' => $pedido,
+            'pedidoItens' => $pedidoItens,
+            'valorTotal' => $valorTotal,
+            'qtdTotal' => $qtdTotal
+        ]);
     }
 }
