@@ -51,6 +51,7 @@ Route::middleware('auth.custom')->group(function () {
     Route::get('/perfil', [PerfilController::class, 'perfil']);
     Route::get('/perfil/editar', [PerfilController::class, 'buscar']);
     Route::post('/perfil/editar', [PerfilController::class, 'editar']);
+    Route::get('/pedido/{id}', [PerfilController::class, 'pedido']);
 
     //buscar e criar endereco
     Route::get('/endereco', [EnderecoController::class, 'endereco']);
@@ -60,6 +61,8 @@ Route::middleware('auth.custom')->group(function () {
 
     Route::get('/carrinho', [CarrinhoController::class, 'carrinho']);
     Route::get('/carrinho/add/{produtoId}/{qtd}', [CarrinhoController::class, 'adicionar']);
+    Route::post('/checkout', [CarrinhoController::class, 'checkout']);
+
 });
 
 require __DIR__ . '/auth.php';

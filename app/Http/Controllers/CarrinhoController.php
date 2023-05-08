@@ -49,4 +49,15 @@ class CarrinhoController extends Controller
         return view('carrinho', ['pedidoItens' => $pedidoItens]);
     }
 
+    function checkout(Request $request){
+
+        $usuario = auth()->user();
+        $pedido = Pedido::where(['USUARIO_ID' => $usuario->USUARIO_ID])->where(['STATUS_ID' => 1])->first();
+
+        $pedido->STATUS_ID = 2;
+        $pedido->save();
+
+        return redirect('/pedido/' . $pedido->PEDIDO_ID);
+
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Endereco;
 use App\Models\Pedido;
+use App\Models\PedidoItem;
 use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
@@ -14,8 +15,6 @@ class PerfilController extends Controller
 {
     function perfil()
     {
-
-
         $usuario = auth()->user();
         $enderecos = Endereco::where(['USUARIO_ID' => $usuario->USUARIO_ID])->get();
         $pedidos = Pedido::where('STATUS_ID', '<>',1)
@@ -56,5 +55,13 @@ class PerfilController extends Controller
         $usuario = auth()->user();
 
         return view('perfil.editar', ['usuario' => $usuario]);
+    }
+
+    function pedido($id)
+    {
+        $pedido = Pedido::find($id);
+        $pedidoItens = PedidoItem::where('PEDIDO_ID', $pedido->PEDIDO_ID)->get();
+
+        return view('pedido', ['pedido' => $pedido, 'pedidoItens' => $pedidoItens]);
     }
 }
