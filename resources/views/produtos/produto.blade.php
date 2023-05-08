@@ -36,32 +36,30 @@
                                             <meta>{{$produto->PRODUTO_DESC}}</meta>
                                         </div>
                                         <hr class="my-4">
-
+                                        @if(isset($produto->estoque->PRODUTO_QTD)&& $produto->estoque->PRODUTO_QTD > 0)
                                         <h8 class="text-muted">Estoque: {{$produto->estoque->PRODUTO_QTD}}</h8>
-
+                                        @else
+                                        <h8 class="text-muted">Estoque: SEM ESTOQUE NO MOMENTO</h8>
+                                        @endif
                                         <div class="d-flex justify-content-between mb-4">
                                             <h5>{{$produto->PRODUTO_PRECO}}</h5>
                                         </div>
+                                        @if(isset($produto->estoque->PRODUTO_QTD) && $produto->estoque->PRODUTO_QTD > 0)
                                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                            <!-- botao nao ta funcionando <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
 
-                                            -->
                                             <hr class="my-4">
 
-                                            <h8 class="text">Escolha a quantidade:</h8>
+                                            <h8 class="text">Escolha a qtd:</h8>
 
                                             <input min="0" name="quantity" value="1" type="number" class="form-control " style="width: 80px" />
-
-                                            <!-- botao nao ta funcionando
-                                            <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
-                                            -->
                                         </div>
+                                        @endif
                                         <hr class="my-4">
+                                        @if(isset($produto->estoque->PRODUTO_QTD)&& $produto->estoque->PRODUTO_QTD > 0)
                                         <a class="btn btn-dark btn-block btn-lg" href="{{url('/carrinho/add/'. $produto->PRODUTO_ID . '/'. 1)}}" data-mdb-ripple-color="dark">Adicionar ao carrinho</a>
+                                        @else
+                                        <a class="btn btn-dark btn-block btn-lg" href="#" data-mdb-ripple-color="dark">ESGOTADO</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
