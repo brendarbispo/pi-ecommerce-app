@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Endereco;
+use App\Models\Pedido;
 use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
@@ -13,14 +14,24 @@ class PerfilController extends Controller
 {
     function perfil()
     {
+
+
         $usuario = auth()->user();
         $enderecos = Endereco::where(['USUARIO_ID' => $usuario->USUARIO_ID])->get();
+        $pedidos = Pedido::where('STATUS_ID', '<>',1)
+            ->where(['USUARIO_ID' => $usuario->USUARIO_ID])->get();
 
-        return view('perfil.perfil', ['usuario' => $usuario, 'enderecos' => $enderecos]);
-
+        return view(
+            'perfil.perfil',
+            [
+                'usuario' => $usuario,
+                'enderecos' => $enderecos,
+                'pedidos' => $pedidos,
+            ]
+        );
     }
 
-    function editar(Request $request) : RedirectResponse
+    function editar(Request $request): RedirectResponse
     {
         $usuario = auth()->user();
         $usuario = Usuario::find($usuario->USUARIO_ID);
@@ -31,20 +42,19 @@ class PerfilController extends Controller
 
         //verificar se o usuario quer mudar a senha
 
-        if(!empty($request->senha)){
+        if (!empty($request->senha)) {
             $usuario->USUARIO_SENHA = Hash::make($request->senha);
         }
 
         $usuario->save();
 
         return redirect('/perfil');
-
     }
 
-    function buscar(){
+    function buscar()
+    {
         $usuario = auth()->user();
 
         return view('perfil.editar', ['usuario' => $usuario]);
-
     }
 }

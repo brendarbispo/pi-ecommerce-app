@@ -17,4 +17,13 @@ class Pedido extends Model
         'PEDIDO_DATA',
     ];
     public $timestamps = false;
+
+    public function status()
+    {
+        $status = $this->hasOne(PedidoStatus::class, 'STATUS_ID', 'STATUS_ID');
+
+        return $status;
+    }
 }
+
+

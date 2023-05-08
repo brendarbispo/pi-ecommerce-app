@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a href="{{url('/perfil/editar')}}"type="button" class="btn btn-outline-dark align-items-center" data-mdb-ripple-color="dark" style="z-index: 1;">
+                            <a href="{{url('/perfil/editar')}}" type="button" class="btn btn-outline-dark align-items-center" data-mdb-ripple-color="dark" style="z-index: 1;">
                                 Editar informações
                             </a>
                         </div>
@@ -61,55 +61,26 @@
                         <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
                     </div>
                     <div class="row">
+                        @foreach($pedidos as $pedido)
                         <div class="col-sm-3">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title fw-bold">Pedido #00004</h5>
-                                    <p class="card-text fs-" style="font-size: 12px;">Data da compra: 17/04/2023</p>
-                                    <p class="card-text" style="font-size: 12px;">Status: ENTREGUE</p>
-                                    <button type="button" class="btn btn-outline-dark align-items-center btn-sm fw-bold" data-mdb-ripple-color="dark" style="z-index: 1;">Ver detalhes
-                                    </button>
+                                    <h5 class="card-title fw-bold">Pedido #{{$pedido->PEDIDO_ID}}</h5>
+                                    <p class="card-text fs-" style="font-size: 12px;">Data da compra:
+                                    {{date('d/m/Y', strtotime($pedido->PEDIDO_DATA))}} </p>
+                                    <p class="card-text" style="font-size: 12px;">Status: {{$pedido->status->STATUS_DESC}}</p>
+                                    <a href="{{url('/pedido/' . $pedido->PEDIDO_ID)}}" class="btn btn-outline-dark align-items-center btn-sm fw-bold" data-mdb-ripple-color="dark" style="z-index: 1;">Ver detalhes
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold">Pedido #00004</h5>
-                                    <p class="card-text fs-" style="font-size: 12px;">Data da compra: 17/04/2023</p>
-                                    <p class="card-text" style="font-size: 12px;">Status: ENTREGUE</p>
-                                    <button type="button" class="btn btn-outline-dark align-items-center btn-sm fw-bold" data-mdb-ripple-color="dark" style="z-index: 1;">Ver detalhes
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold">Pedido #00004</h5>
-                                    <p class="card-text fs-" style="font-size: 12px;">Data da compra: 17/04/2023</p>
-                                    <p class="card-text" style="font-size: 12px;">Status: ENTREGUE</p>
-                                    <button type="button" class="btn btn-outline-dark align-items-center btn-sm fw-bold" data-mdb-ripple-color="dark" style="z-index: 1;">Ver detalhes
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold">Pedido #00004</h5>
-                                    <p class="card-text fs-" style="font-size: 12px;">Data da compra: 17/04/2023</p>
-                                    <p class="card-text" style="font-size: 12px;">Status: ENTREGUE</p>
-                                    <button type="button" class="btn btn-outline-dark align-items-center btn-sm fw-bold" data-mdb-ripple-color="dark" style="z-index: 1;">Ver detalhes
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 </section>
 
