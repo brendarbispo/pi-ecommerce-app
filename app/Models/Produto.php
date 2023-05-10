@@ -24,8 +24,8 @@ class Produto extends Model
         return number_format(($this->PRODUTO_PRECO - $this->PRODUTO_DESCONTO), 2, ',', '.');
     }*/
 
-    public function estoque() : HasOne{
+    public function estoque(): HasOne
+    {
         return $this->hasOne(ProdutoEstoque::class, 'PRODUTO_ID', 'PRODUTO_ID');
-
     }
 }

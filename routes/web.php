@@ -34,6 +34,7 @@ Route::get('/', function (Request $request) {
 Route::get('/produto/{id}', [ProdutoController::class, "produto"]);
 
 Route::get('/produtos', [ProdutoController::class, "produtos"]);
+Route::get('/produtos/{busca}', [ProdutoController::class, "busca"]);
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +65,6 @@ Route::middleware('auth.custom')->group(function () {
     Route::get('/carrinho/remover/{produtoId}', [CarrinhoController::class, 'remover']);
 
     Route::post('/checkout', [CarrinhoController::class, 'checkout']);
-
 });
 
 require __DIR__ . '/auth.php';

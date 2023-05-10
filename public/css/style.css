@@ -128,5 +128,14 @@ i{
 .mw-0{
     min-width: 0 !important;
 }
+.zoom {
+    transition: transform .2s; /* Animation */
+  }
 
+  .zoom:hover {
+    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    background-color: #1C8394;
+    color: rgb(255, 255, 255);
+    border-color: #1C8394;
+  }
 

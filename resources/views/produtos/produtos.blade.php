@@ -9,7 +9,7 @@
         <div class="col-3 my-3">
             <div class="card">
                 @if(isset($produto->ProdutoImagem[0]))
-                <img src="{{$produto->ProdutoImagem[0]->IMAGEM_URL}}" class="card-img-top" alt="...">
+                <img src="{{$produto->ProdutoImagem[0]->IMAGEM_URL}}" class="card-img-top" alt="..." style="width: 284px; height:294px">
                 @else
                 <img src="{{'https://cdn1.staticpanvel.com.br/produtos/15/produto-sem-imagem.jpg'}}" class="card-img-top" alt="...">
                 @endif
