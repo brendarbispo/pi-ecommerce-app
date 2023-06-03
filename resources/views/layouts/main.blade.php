@@ -11,9 +11,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="{{ url('/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css" />
+    <link rel="icon" type="image/x-icon" href="{{ url('/img/icone.ico') }}">
 </head>
 
 <body>
+
+    <div class="banner">
+        <h3 class="frete">
+            <b>FRETE GRATIS:</b> Entrega gratis para todo o Brasil.
+        </h3>
+    </div>
     <!-- BARRA DE NAVEGAÇAO -->
     <nav class="navbar navbar-expand-lg navbar-light py-4">
 
@@ -21,28 +28,40 @@
 
             <!--CONTAINER LOGO-->
             <a class="navbar-brand" href="{{url('/')}}">
-                <img class="logo" src="{{ url('/img/logo.jpg') }}" alt="logo_delta">
+                <img class="logo" src="{{ url('/img/logoDeltaP.png') }}" alt="logo_delta">
             </a>
-            <div class="input-group mx-10">
-                <input type="text" class="form-control busca-borda" placeholder="Buscar produto...">
-                <button class="btn btn-outline-secondary busca-borda" type="button">
-                    <i class="fas fa-search"></i></button>
-            </div>
 
-            <!--INICIO DO BLOCO DE PESQUISA/CARRINHO/ENTRAR-->
-            <ul class="navbar-nav d-flex flex-row">
-                <li class="nav-item me-3 me-lg-0">
+            <ul class="navbar-nav d-flex flex-row  justify-content-center align-items-center">
+                <li class="nav-item me-3 mx-3 align-middle">
+                    <a class="link-home" href="{{url('/')}}">HOME</a>
+                </li>
+                <li class="nav-item me-3 mx-3 align-middle">
+                    <a class="link-home" href="{{url('/produtos')}}">PRODUTOS</a>
+                </li>
+                <li class="nav-item me-3 mx-3 align-middle">
+                    <a class="link-home" style="color: red;" href="{{url('/')}}">OUTLET</a>
+                </li>
+
+                <li class="nav-item me-3 ">
+                    <div class="input-group my-1 buscar-campo">
+                        <input type="text" class="form-control buscar no-border" placeholder="Buscar produto...">
+                        <button class="btn bnt-primary lupa" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </li>
+                <li class="nav-item me-3 ">
                     <a class="nav-link" href="{{url('/carrinho')}}"><i class="fas fa-bag-shopping"></i></a>
                 </li>
                 @if (auth()->check())
 
-                <li class="nav-item me-3 me-lg-0 dropdown">
+                <li class="nav-item me-3  dropdown">
                     <a class="nav-link" href="#" id="perfil" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user"></i>
                     </a>
                     <ul class="dropdown-menu mw-0" aria-labelledby="perfil">
-                        <li><a class="dropdown-item" href="{{url('/perfil')}}">Perfil</a></li>
-                        <li ><a class="dropdown-item" href="{{url('/sair')}}">Sair</a></li>
+                        <li><a class="dropdown-item" style="font-size: 16px" href="{{url('/perfil')}}">Perfil</a></li>
+                        <li><a class="dropdown-item" style="font-size: 16px" href="{{url('/sair')}}">Sair</a></li>
                     </ul>
                 </li>
 
@@ -111,20 +130,10 @@
                                     <label for="senha" class="col-form-label">Senha:</label>
                                     <input type="password" class="form-control" id="senha" name="senha">
                                 </div>
-                                <div class="mb-3">
-                                    <a href="#">
-                                        Esqueceu sua senha?
-                                    </a>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="checkbox" name="lembrar">
-                                    Lembrar de mim
-                                    </input>
-                                </div>
                                 <div class="modal-footer ">
                                     <div class="mx-auto">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                                        <button type="submmit" class="btn btn-primary">Entrar</button>
+                                        <button type="button" class="btn btn-ver" data-bs-dismiss="modal">Voltar</button>
+                                        <button type="submmit" class="btn btn-ver2">Entrar</button>
                                     </div>
                                 </div>
                             </form>
@@ -163,8 +172,8 @@
 
                                 <div class="modal-footer ">
                                     <div class="mx-auto">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                                        <button type="submmit" class="btn btn-primary">Cadastrar</button>
+                                        <button type="button" class="btn btn-ver" data-bs-dismiss="modal">Voltar</button>
+                                        <button type="submmit" class="btn btn-ver2">Cadastrar</button>
                                     </div>
                                 </div>
                             </form>
@@ -187,13 +196,12 @@
     <div class="container">
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">INICIO</a></li>
-                <li class="nav-item"><a href="/produtos" class="nav-link px-2 text-muted">ROUPAS</a></li>
-                <li class="nav-item"><a href="/produtos" class="nav-link px-2 text-muted">SAPATOS</a></li>
-                <li class="nav-item"><a href="/produtos" class="nav-link px-2 text-muted">TODOS OS PRODUTOS</a></li>
-                <li class="nav-item"><a href="/perfil" class="nav-link px-2 text-muted">MEUS DADOS</a></li>
+                <li class="nav-item "><a href="/" class="nav-link px-2 text-muted rodape-link">INICIO</a></li>
+                <li class="nav-item"><a href="/produtos" class="nav-link px-2 text-muted rodape-link">PRODUTOS</a></li>
+                <li class="nav-item"><a href="/produtos" class="nav-link px-2 text-muted rodape-link">OUTLET</a></li>
+                <li class="nav-item"><a href="/perfil" class="nav-link px-2 text-muted rodape-link">MEUS DADOS</a></li>
             </ul>
-            <p class="text-center text-muted">© 2023 DELTA STORES, Criado por Brenda Rodrigues e João Setani - TSI</p>
+            <p class="text-center text-muted rodape-link">© 2023 DELTA STORES, Criado por Brenda Rodrigues e João Setani - TSI</p>
         </footer>
     </div>
     <!--FIM DO FOOTER-->

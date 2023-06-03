@@ -30,10 +30,7 @@ h2{
     font-size: 36px;
     font-weight: 800;
 }
-h3{
-    font-size: 18px;
-    font-weight: 200;
-}
+
 
 li{
     font-size: 12px;
@@ -51,17 +48,21 @@ li{
     margin-left: 10rem!important;
 }
 .banner{
-    background-color:white;
-    color: #457373;
+    background-color:#1C8394;
 }
 
 .banner h3 {
     font-weight: bold;
     text-align: center;
-    padding: 5px;
+    padding: 10px;
     margin: 0 !important;
 
 }
+.frete{
+    font-size: 12px;
+    font-weight: 200;
+    color: white;
+  }
 .navegacao{
     margin: 20px 0;
 }
@@ -82,17 +83,12 @@ li{
     color: rgba(0,0,0);
 }
 
-nav
-{
-    background-color:#3D3D3D;
-}
-
 .logo{
-    width: 102px;
+    width: 124px;
     height: auto;
 }
 i{
-    color: white;
+    color: #1C8394;
 
 }
 
@@ -101,30 +97,19 @@ i{
     background-color: white;
     border: white;
     border-radius: 30px;
-}
-.fa-search{
-    color: #3D3D3D;
+    display: inline;
 }
 
 .fa-search::before{
-    color: #d5d5d5;
+    color: #1C8394;
 }
-/*.img-fluid
-{
-    width: 1300px;
-    height: 600px;
-}*/
+
 .imgProduto
 {
     width: 450px;
     height: auto;
 }
 
-.busca-borda
-{
-   border: white;
-   border-radius: 30px;
-}
 .mw-0{
     min-width: 0 !important;
 }
@@ -138,4 +123,104 @@ i{
     color: rgb(255, 255, 255);
     border-color: #1C8394;
   }
+.buscar{
+    display: inline;
+    border: none;
+}
 
+
+.buscar-campo{
+    border-bottom: solid 2px #1C8394 !important;
+
+}
+
+.lupa{
+    color: black !important;
+}
+
+.bnt-primary{
+    background-color: none !important;
+    color: black !important;
+}
+.link-home
+{
+ font-size: 16px;
+ text-decoration: none;
+ color: black;
+ text-align: center;
+}
+.link-home:hover{
+    color: #1C8394;
+}
+
+.no-border {
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.rodape-link{
+    color: #154B52 !important;
+}
+.categorias-home{
+   background-color: #601603;
+   color: white;
+
+}
+
+.btn-ver{
+    background-color: #601603;
+    color: rgb(255, 255, 255);
+
+}
+.btn-ver:hover{
+    background-color: #601603;
+    color: rgb(255, 255, 255);
+
+}
+
+.zoom-2 {
+    transition: transform .3s; /* Animation */
+  }
+
+  .zoom-2:hover {
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border-color: #000000;
+
+  }
+
+  .btn-ver2{
+    background-color: #1C8394;
+    color: rgb(255, 255, 255);
+
+}
+
+.btn-ver2:hover
+{
+    background-color: #939393;
+    color: #ffffff;
+
+}
+
+.img-carrinho
+{
+    width: 200px;
+    height: auto;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link
+{
+    color:white;
+    background-color:#1C8394;
+}
+
+.nav-link
+{
+    color:#1C8394; ;
+}
+.card-cor
+{
+    background-color:#abd7df;
+
+}

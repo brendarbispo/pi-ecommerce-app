@@ -43,6 +43,7 @@ Route::get('/produtos/{busca}', [ProdutoController::class, "busca"]);
 |--------------------------------------------------------------------------
 */
 
+
 Route::middleware('auth.custom')->group(function () {
     //perfil, carrinho, Xpedidos, pedido, endereços
     Route::get('/pedidos', function () {

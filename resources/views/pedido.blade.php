@@ -27,7 +27,7 @@
                                         <div class="row mb-4 d-flex justify-content-between align-items-center">
                                             <div class="col-md-3 col-lg-3 col-xl-3">
                                                 @if(isset($pedidoItem->ProdutoImagem[0]))
-                                                <img src="{{$pedidoItem->ProdutoImagem[0]->IMAGEM_URL}}" class="img-fluid rounded-3" style="width: 200px; height:200px" alt="{{$pedidoItem->PRODUTO_NOME}}">
+                                                <img src="{{$pedidoItem->ProdutoImagem[0]->IMAGEM_URL}}" class="img-fluid img-carrinho rounded-3" alt="{{$pedidoItem->PRODUTO_NOME}}">
                                                 @else
                                                 <img src="{{'https://cdn1.staticpanvel.com.br/produtos/15/produto-sem-imagem.jpg'}}" height="100px" class="img-fluid rounded-3" alt="{{$pedidoItem->PRODUTO_NOME}}">
                                                 @endif

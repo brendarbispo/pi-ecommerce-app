@@ -25,7 +25,7 @@
                             <div class="row mb-4 d-flex justify-content-between align-items-center">
                                 <div class="col-md-2 col-lg-2 col-xl-2">
                                     @if(isset($pedidoItem->ProdutoImagem[0]))
-                                    <img src="{{$pedidoItem->ProdutoImagem[0]->IMAGEM_URL}}" class="img-fluid rounded-3" style="width: 284px; height:294px" height="100px" alt="{{$pedidoItem->PRODUTO_NOME}}">
+                                    <img src="{{$pedidoItem->ProdutoImagem[0]->IMAGEM_URL}}" class="img-fluid rounded-3 p-3 img-carrinho" alt="{{$pedidoItem->PRODUTO_NOME}}">
                                     @else
                                     <img src="{{'https://cdn1.staticpanvel.com.br/produtos/15/produto-sem-imagem.jpg'}}" height="100px" class="img-fluid rounded-3" alt="{{$pedidoItem->PRODUTO_NOME}}">
                                     @endif
@@ -33,7 +33,7 @@
                                 <div class="col-md-2 col-lg-2 col-xl-2">
                                     <h6 class="text-muted">{{$pedidoItem->Produto[0]->PRODUTO_NOME}}</h6>
                                 </div>
-                                @if($pedidoItem->Produto[0]->PRODUTO_DESCONTO > 0)
+                                @if($pedidoItem->Produto[0]->PRODUTO_DESCONTO > 1)
                                 <div class="col-md-2 col-lg-2 col-xl-2">
                                     <h6 class="mb-0">De R$ <s>{{$pedidoItem->Produto[0]->PRODUTO_PRECO}}</s></h6>
                                 </div>
@@ -81,7 +81,7 @@
                                     <h5>{{$valorTotal}}</h5>
                                 </div>
 
-                                <button type="submit" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">Finalizar Pedido</button>
+                                <button type="submit" class="btn btn-ver2 btn-block btn-lg" >Finalizar Pedido</button>
                             </form>
                         </div>
                     </div>

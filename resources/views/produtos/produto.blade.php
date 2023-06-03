@@ -8,14 +8,16 @@
         <div class="container py-5 h-100 ">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 ">
+
+                    <div class="d-flex justify-content-between align-items-center mb-5">
+                        <h1 class="fw-bold mb-0 text-black">{{$produto->PRODUTO_NOME}}</h1>
+                    </div>
+
                     <div class="card justify-content-center d-flex  card-registration card-registration-2" style="border-radius: 15px;">
                         <div class="card-body p-0">
                             <div class="row g-0">
                                 <div class="col-lg-8">
                                     <div class="p-5">
-                                        <div class="d-flex justify-content-between align-items-center mb-5">
-                                            <h1 class="fw-bold mb-0 text-black">{{$produto->PRODUTO_NOME}}</h1>
-                                        </div>
                                         <div class="row mb-4 d-flex justify-content-between align-items-center">
                                             <div class="col-md-3 col-lg-3 col-xl-3">
 
@@ -41,22 +43,28 @@
                                         @else
                                         <h8 class="text-muted">Estoque: SEM ESTOQUE NO MOMENTO</h8>
                                         @endif
-                                        <div class="d-flex justify-content-between mb-4">
-                                            <h5>{{$produto->PRODUTO_PRECO}}</h5>
-                                        </div>
+
+                                        @if($produto->PRODUTO_DESCONTO > 0)
+                                        <s>
+                                            <p class="card-text" style="font-size: 12px;">R$ {{ $produto->PRODUTO_PRECO }}</p>
+                                        </s>
+                                        <p class="card-text " style="color: red; font-weight: bold;">R$ {{ ($produto->PRODUTO_PRECO) - ($produto->PRODUTO_DESCONTO) }}</p>
+                                        @else
+                                        <p class="card-text">R$ {{ $produto->PRODUTO_PRECO }}</p>
+                                        @endif
                                         @if(isset($produto->estoque->PRODUTO_QTD) && $produto->estoque->PRODUTO_QTD > 0)
                                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
 
                                             <hr class="my-4">
 
-                                            <h8 class="text">Escolha a qtd:</h8>
+                                            <h8 class="text p-2">Escolha a qtd:</h8>
 
                                             <input min="0" name="quantity" value="1" type="number" class="form-control " style="width: 80px" />
                                         </div>
                                         @endif
                                         <hr class="my-4">
                                         @if(isset($produto->estoque->PRODUTO_QTD)&& $produto->estoque->PRODUTO_QTD > 0)
-                                        <a class="btn btn-dark btn-block btn-lg" href="{{url('/carrinho/add/'. $produto->PRODUTO_ID . '/'. 1)}}" data-mdb-ripple-color="dark">Adicionar ao carrinho</a>
+                                        <a class="btn btn-ver2 btn-block btn-lg" href="{{url('/carrinho/add/'. $produto->PRODUTO_ID . '/'. 1)}}" >Adicionar ao carrinho</a>
                                         @else
                                         <a class="btn btn-dark btn-block btn-lg" href="#" data-mdb-ripple-color="dark">ESGOTADO</a>
                                         @endif
