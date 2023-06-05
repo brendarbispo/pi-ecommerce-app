@@ -128,7 +128,6 @@ i{
     border: none;
 }
 
-
 .buscar-campo{
     border-bottom: solid 2px #1C8394 !important;
 
@@ -158,6 +157,12 @@ i{
     box-shadow: none !important;
 }
 
+.border-regurlar {
+    border: 1px solid black !important;
+    box-shadow: none !important;
+
+}
+
 .rodape-link{
     color: #154B52 !important;
 }
@@ -169,12 +174,12 @@ i{
 
 .btn-ver{
     background-color: #601603;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
 
 }
 .btn-ver:hover{
-    background-color: #601603;
-    color: rgb(255, 255, 255);
+    background-color: #939393;
+    color: #ffffff;
 
 }
 
@@ -182,25 +187,34 @@ i{
     transition: transform .3s; /* Animation */
   }
 
-  .zoom-2:hover {
+.zoom-2:hover {
     transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
     background-color: #ffffff;
     color: rgb(0, 0, 0);
     border-color: #000000;
+}
 
-  }
-
-  .btn-ver2{
+.btn-ver2{
     background-color: #1C8394;
-    color: rgb(255, 255, 255);
-
+    color:  #ffffff;
 }
 
 .btn-ver2:hover
 {
     background-color: #939393;
     color: #ffffff;
+}
 
+.btn-cinza
+{
+    background-color: #939393;
+    color: #ffffff;
+}
+
+.btn-cinza:hover
+{
+    background-color: #1C8394;
+    color:  #ffffff;
 }
 
 .img-carrinho

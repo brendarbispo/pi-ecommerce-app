@@ -20,12 +20,11 @@ class Produto extends Model
         return $imagens;
     }
 
-    /*public function preco(){
-        return number_format(($this->PRODUTO_PRECO - $this->PRODUTO_DESCONTO), 2, ',', '.');
-    }*/
-
     public function estoque(): HasOne
     {
-        return $this->hasOne(ProdutoEstoque::class, 'PRODUTO_ID', 'PRODUTO_ID');
+        return $this->hasOne(ProdutoEstoque::class, 'PRODUTO_ID', 'PRODUTO_ID')
+            ->selectRaw('(PRODUTO_ESTOQUE.PRODUTO_QTD - SUM(PEDIDO_ITEM.ITEM_QTD)) AS PRODUTO_QTD')
+            ->leftJoin('PEDIDO_ITEM', 'PEDIDO_ITEM.PRODUTO_ID', '=', 'PRODUTO_ESTOQUE.PRODUTO_ID')
+            ->groupBy('PRODUTO_ESTOQUE.PRODUTO_QTD');
     }
 }

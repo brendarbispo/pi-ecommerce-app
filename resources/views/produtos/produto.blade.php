@@ -32,43 +32,47 @@
                                 </div>
 
                                 <div class="col-lg-4 bg-grey">
-                                    <div class="p-5">
-                                        <h3 class="fw-bold mb-5 mt-2 pt-1">Descrição</h3>
-                                        <div class="d-flex justify-content-between mb-5">
-                                            <meta>{{$produto->PRODUTO_DESC}}</meta>
-                                        </div>
-                                        <hr class="my-4">
-                                        @if(isset($produto->estoque->PRODUTO_QTD)&& $produto->estoque->PRODUTO_QTD > 0)
-                                        <h8 class="text-muted">Estoque: {{$produto->estoque->PRODUTO_QTD}}</h8>
-                                        @else
-                                        <h8 class="text-muted">Estoque: SEM ESTOQUE NO MOMENTO</h8>
-                                        @endif
-
-                                        @if($produto->PRODUTO_DESCONTO > 0)
-                                        <s>
-                                            <p class="card-text" style="font-size: 12px;">R$ {{ $produto->PRODUTO_PRECO }}</p>
-                                        </s>
-                                        <p class="card-text " style="color: red; font-weight: bold;">R$ {{ ($produto->PRODUTO_PRECO) - ($produto->PRODUTO_DESCONTO) }}</p>
-                                        @else
-                                        <p class="card-text">R$ {{ $produto->PRODUTO_PRECO }}</p>
-                                        @endif
-                                        @if(isset($produto->estoque->PRODUTO_QTD) && $produto->estoque->PRODUTO_QTD > 0)
-                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-
+                                    <form action="{{url('/carrinho/add')}}" method="post">
+                                        @csrf
+                                        <div class="p-5">
+                                            <h3 class="fw-bold mb-5 mt-2 pt-1">Descrição</h3>
+                                            <div class="d-flex justify-content-between mb-5">
+                                                <meta>{{$produto->PRODUTO_DESC}}</meta>
+                                            </div>
                                             <hr class="my-4">
+                                            @if(isset($produto->estoque) && isset($produto->estoque->PRODUTO_QTD) && $produto->estoque->PRODUTO_QTD > 0)
+                                            <h8 class="text-muted">Estoque: {{$produto->estoque->PRODUTO_QTD}}</h8>
+                                            @else
+                                            <h8 class="text-muted">Estoque: SEM ESTOQUE NO MOMENTO</h8>
+                                            @endif
 
-                                            <h8 class="text p-2">Escolha a qtd:</h8>
-
-                                            <input min="0" name="quantity" value="1" type="number" class="form-control " style="width: 80px" />
+                                            @if($produto->PRODUTO_DESCONTO > 0)
+                                            <s>
+                                                <p class="card-text" style="font-size: 12px;">R$ {{ $produto->PRODUTO_PRECO }}</p>
+                                            </s>
+                                            <p class="card-text " style="color: red; font-weight: bold;">R$ {{ ($produto->PRODUTO_PRECO) - ($produto->PRODUTO_DESCONTO) }}</p>
+                                            @else
+                                            <p class="card-text">R$ {{ $produto->PRODUTO_PRECO }}</p>
+                                            @endif
+                                            @if(isset($produto->estoque) && isset($produto->estoque->PRODUTO_QTD) && $produto->estoque->PRODUTO_QTD > 0)
+                                            <input type="hidden" value="{{$produto->PRODUTO_ID}}" name="produtoId">
+                                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                                <div class="col-auto">
+                                                    <label for="quantidade" class="col-form-label">Escolha a qtd:</label>
+                                                </div>
+                                                <div class="col-auto mx-2">
+                                                    <input type="number" id="quantidade" name="qtd" class="form-control border-regurlar" min="1" max="{{$produto->estoque->PRODUTO_QTD}}" name="qtd" value="1">
+                                                </div>
+                                            </div>
+                                            @endif
+                                            <hr class="my-4">
+                                            @if(isset($produto->estoque->PRODUTO_QTD)&& $produto->estoque->PRODUTO_QTD > 0)
+                                            <input type="submit" class="btn btn-ver2 btn-block btn-lg" value="Adicionar ao carrinho">
+                                            @else
+                                            <a class="btn btn-dark btn-block btn-lg" href="#" data-mdb-ripple-color="dark">ESGOTADO</a>
+                                            @endif
                                         </div>
-                                        @endif
-                                        <hr class="my-4">
-                                        @if(isset($produto->estoque->PRODUTO_QTD)&& $produto->estoque->PRODUTO_QTD > 0)
-                                        <a class="btn btn-ver2 btn-block btn-lg" href="{{url('/carrinho/add/'. $produto->PRODUTO_ID . '/'. 1)}}" >Adicionar ao carrinho</a>
-                                        @else
-                                        <a class="btn btn-dark btn-block btn-lg" href="#" data-mdb-ripple-color="dark">ESGOTADO</a>
-                                        @endif
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

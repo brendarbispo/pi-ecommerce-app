@@ -13,7 +13,9 @@ class CarrinhoController extends Controller
     function adicionar(Request $request): RedirectResponse
     {
         $usuario = auth()->user();
-        $pedido = Pedido::where(['USUARIO_ID' => $usuario->USUARIO_ID])->where(['STATUS_ID' => 1])->first();
+        $pedido = Pedido::where('USUARIO_ID', $usuario->USUARIO_ID)
+            ->where('STATUS_ID', 1)
+            ->first();
 
         if (is_null($pedido)) {
             $pedido = Pedido::create([
@@ -53,6 +55,7 @@ class CarrinhoController extends Controller
             }
         }
 
+
         return redirect('/carrinho');
     }
 
@@ -75,7 +78,9 @@ class CarrinhoController extends Controller
     function carrinho()
     {
         $usuario = auth()->user();
-        $pedido = Pedido::where(['USUARIO_ID' => $usuario->USUARIO_ID])->where(['STATUS_ID' => 1])->first();
+        $pedido = Pedido::where('USUARIO_ID', $usuario->USUARIO_ID)
+            ->where('STATUS_ID', 1)
+            ->first();
 
         if (is_null($pedido)) {
             return view('carrinho', [

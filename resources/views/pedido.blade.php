@@ -27,31 +27,32 @@
                                         <div class="row mb-4 d-flex justify-content-between align-items-center">
                                             <div class="col-md-3 col-lg-3 col-xl-3">
                                                 @if(isset($pedidoItem->ProdutoImagem[0]))
-                                                <img src="{{$pedidoItem->ProdutoImagem[0]->IMAGEM_URL}}" class="img-fluid img-carrinho rounded-3" alt="{{$pedidoItem->PRODUTO_NOME}}">
+                                                <a href="{{url('/produto/' . $pedidoItem->PRODUTO_ID)}}">
+
+                                                    <img src="{{$pedidoItem->ProdutoImagem[0]->IMAGEM_URL}}" class="img-fluid img-carrinho rounded-3" alt="{{$pedidoItem->PRODUTO_NOME}}">
+                                                </a>
                                                 @else
-                                                <img src="{{'https://cdn1.staticpanvel.com.br/produtos/15/produto-sem-imagem.jpg'}}" height="100px" class="img-fluid rounded-3" alt="{{$pedidoItem->PRODUTO_NOME}}">
+                                                <a href="{{url('/produto/' . $pedidoItem->PRODUTO_ID)}}">
+
+                                                    <img src="{{'https://cdn1.staticpanvel.com.br/produtos/15/produto-sem-imagem.jpg'}}" height="100px" class="img-fluid rounded-3" alt="{{$pedidoItem->PRODUTO_NOME}}">
+                                                </a>
                                                 @endif
                                             </div>
                                             <div class="col-md-3 col-lg-3 col-xl-3">
                                                 <h6 class="text-muted">{{$pedidoItem->Produto[0]->PRODUTO_NOME}}</h6>
                                             </div>
-                                            @if($pedidoItem->Produto[0]->PRODUTO_DESCONTO > 0)
-                                            <div class="col-md-1 col-lg-2 col-xl-2 offset-lg-1">
-                                                <h6 class="mb-0">De R$ <s>{{$pedidoItem->Produto[0]->PRODUTO_PRECO}}</s></h6>
+
+                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                <h6 class="mb-0">R$ {{$pedidoItem->ITEM_PRECO}}</h6>
                                             </div>
-                                            <div class="col-md-1 col-lg-2 col-xl-2 offset-lg-1">
-                                                <h6 class="mb-0">Por R$ {{$pedidoItem->Produto[0]->PRODUTO_PRECO}}</h6>
+                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                <h6 class="mb-0">Qtd: {{$pedidoItem->ITEM_QTD}}</h6>
                                             </div>
-                                            @else
-                                            <div class="col-md-1 col-lg-2 col-xl-2 offset-lg-1">
-                                                <h6 class="mb-0">Por R$ {{$pedidoItem->Produto[0]->PRODUTO_PRECO}}</h6>
-                                            </div>
-                                            @endif
                                         </div>
                                         @endforeach
                                         @endif
                                         <div class="pt-5">
-                                            <h6 class="mb-0"><a href="/produtos" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Continuar comprando</a></h6>
+                                            <h6 class="mb-0"><a href="/perfil" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Perfil</a></h6>
                                         </div>
                                     </div>
                                 </div>

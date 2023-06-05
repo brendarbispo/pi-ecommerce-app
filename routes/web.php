@@ -7,6 +7,7 @@ use App\Models\Produto;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\PerfilController;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 /*
@@ -21,7 +22,16 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function (Request $request) {
-    return view('index', ['request' => $request]);
+    $produtos = Produto::where('PRODUTO_ATIVO', 1)
+        ->whereRaw('(PRODUTO_PRECO - PRODUTO_DESCONTO) > 0')
+        ->get()
+        ->take(4);
+
+    $categorias = Categoria::where('CATEGORIA_ATIVO', 1)
+        ->get()
+        ->take(10);
+
+    return view('index', ['request' => $request, 'produtos' => $produtos, 'categorias' => $categorias]);
 });
 
 /*
@@ -34,6 +44,7 @@ Route::get('/', function (Request $request) {
 Route::get('/produto/{id}', [ProdutoController::class, "produto"]);
 
 Route::get('/produtos', [ProdutoController::class, "produtos"]);
+Route::get('/outlet', [ProdutoController::class, "outlet"]);
 Route::get('/produtos/{busca}', [ProdutoController::class, "busca"]);
 
 /*
@@ -62,7 +73,9 @@ Route::middleware('auth.custom')->group(function () {
     Route::post('/endereco/editar/', [EnderecoController::class, 'editar']);
 
     Route::get('/carrinho', [CarrinhoController::class, 'carrinho']);
+    Route::post('/carrinho/add', [CarrinhoController::class, 'adicionar']);
     Route::get('/carrinho/add/{produtoId}/{qtd}', [CarrinhoController::class, 'adicionar']);
+
     Route::get('/carrinho/remover/{produtoId}', [CarrinhoController::class, 'remover']);
 
     Route::post('/checkout', [CarrinhoController::class, 'checkout']);

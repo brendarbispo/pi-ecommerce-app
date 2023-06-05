@@ -18,7 +18,7 @@
 
     <div class="banner">
         <h3 class="frete">
-            <b>FRETE GRATIS:</b> Entrega gratis para todo o Brasil.
+            <b>FRETE GRÁTIS:</b> Para todo o Brasil.
         </h3>
     </div>
     <!-- BARRA DE NAVEGAÇAO -->
@@ -39,13 +39,13 @@
                     <a class="link-home" href="{{url('/produtos')}}">PRODUTOS</a>
                 </li>
                 <li class="nav-item me-3 mx-3 align-middle">
-                    <a class="link-home" style="color: red;" href="{{url('/')}}">OUTLET</a>
+                    <a class="link-home" style="color: red;" href="{{url('/outlet')}}">OUTLET</a>
                 </li>
 
                 <li class="nav-item me-3 ">
                     <div class="input-group my-1 buscar-campo">
-                        <input type="text" class="form-control buscar no-border" placeholder="Buscar produto...">
-                        <button class="btn bnt-primary lupa" type="button">
+                        <input type="text" class="form-control buscar no-border" id="buscar" placeholder="Buscar produto...">
+                        <button class="btn bnt-primary lupa" id="lupa" type="button">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
@@ -81,7 +81,7 @@
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                @if (count($errors) > 0)
+                @if (isset($errors) && count($errors) > 0)
                 <div class="modal-header ">
                     <div class="container">
                         <div class="row justify-content-md-center">
@@ -198,10 +198,10 @@
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item "><a href="/" class="nav-link px-2 text-muted rodape-link">INICIO</a></li>
                 <li class="nav-item"><a href="/produtos" class="nav-link px-2 text-muted rodape-link">PRODUTOS</a></li>
-                <li class="nav-item"><a href="/produtos" class="nav-link px-2 text-muted rodape-link">OUTLET</a></li>
-                <li class="nav-item"><a href="/perfil" class="nav-link px-2 text-muted rodape-link">MEUS DADOS</a></li>
+                <li class="nav-item"><a href="/outlet" class="nav-link px-2 text-muted rodape-link">OUTLET</a></li>
+                <li class="nav-item"><a href="/perfil" class="nav-link px-2 text-muted rodape-link">MEU PERFIL</a></li>
             </ul>
-            <p class="text-center text-muted rodape-link">© 2023 DELTA STORES, Criado por Brenda Rodrigues e João Setani - TSI</p>
+            <p class="text-center text-muted rodape-link">© 2023 DELTA SPORTS, Criado por Brenda Rodrigues e João Setani - TSI</p>
         </footer>
     </div>
     <!--FIM DO FOOTER-->
@@ -210,5 +210,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
+
+<script src="{{ url('/js/script.js') }}"></script>
 
 </html>

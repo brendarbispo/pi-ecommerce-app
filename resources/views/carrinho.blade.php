@@ -25,15 +25,19 @@
                             <div class="row mb-4 d-flex justify-content-between align-items-center">
                                 <div class="col-md-2 col-lg-2 col-xl-2">
                                     @if(isset($pedidoItem->ProdutoImagem[0]))
-                                    <img src="{{$pedidoItem->ProdutoImagem[0]->IMAGEM_URL}}" class="img-fluid rounded-3 p-3 img-carrinho" alt="{{$pedidoItem->PRODUTO_NOME}}">
+                                    <a href="{{url('/produto/' . $pedidoItem->PRODUTO_ID)}}">
+                                        <img src="{{$pedidoItem->ProdutoImagem[0]->IMAGEM_URL}}" class="img-fluid rounded-3 p-3 img-carrinho" alt="{{$pedidoItem->PRODUTO_NOME}}">
+                                    </a>
                                     @else
-                                    <img src="{{'https://cdn1.staticpanvel.com.br/produtos/15/produto-sem-imagem.jpg'}}" height="100px" class="img-fluid rounded-3" alt="{{$pedidoItem->PRODUTO_NOME}}">
+                                    <a href="{{url('/produto/' . $pedidoItem->PRODUTO_ID)}}">
+                                        <img src="{{'https://cdn1.staticpanvel.com.br/produtos/15/produto-sem-imagem.jpg'}}" height="100px" class="img-fluid rounded-3" alt="{{$pedidoItem->PRODUTO_NOME}}">
+                                    </a>
                                     @endif
                                 </div>
                                 <div class="col-md-2 col-lg-2 col-xl-2">
                                     <h6 class="text-muted">{{$pedidoItem->Produto[0]->PRODUTO_NOME}}</h6>
                                 </div>
-                                @if($pedidoItem->Produto[0]->PRODUTO_DESCONTO > 1)
+                                @if($pedidoItem->Produto[0]->PRODUTO_DESCONTO > 0)
                                 <div class="col-md-2 col-lg-2 col-xl-2">
                                     <h6 class="mb-0">De R$ <s>{{$pedidoItem->Produto[0]->PRODUTO_PRECO}}</s></h6>
                                 </div>
@@ -41,6 +45,9 @@
                                     <h6 class="mb-0">Por R$ {{$pedidoItem->ITEM_PRECO}}</h6>
                                 </div>
                                 @else
+                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                    <h6 class="mb-0"></h6>
+                                </div>
                                 <div class="col-md-1 col-lg-2 col-xl-2">
                                     <h6 class="mb-0">Por R$ {{$pedidoItem->ITEM_PRECO}}</h6>
                                 </div>
@@ -77,11 +84,12 @@
                                 <hr class="my-4">
 
                                 <div class="d-flex justify-content-between mb-5">
-                                    <h5 class="text-uppercase">Total da compra</h5>
-                                    <h5>{{$valorTotal}}</h5>
+                                    <h5 class="">Total da compra</h5>
+                                    <h5>R$ {{number_format($valorTotal, 2, ',', ''); }}</h5>
                                 </div>
-
-                                <button type="submit" class="btn btn-ver2 btn-block btn-lg" >Finalizar Pedido</button>
+                                @if(count($pedidoItens) > 0)
+                                <button type="submit" class="btn btn-ver2 btn-block btn-lg">Finalizar Pedido</button>
+                                @endif
                             </form>
                         </div>
                     </div>
